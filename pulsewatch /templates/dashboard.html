@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseWatch Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>PulseWatch</h1>
+      <p>macOS system + network performance dashboard</p>
+    </div>
+    <div class="pill" id="last-updated">Waiting for first sample...</div>
+  </header>
+
+  <main>
+    <section class="grid cards">
+      <article class="card">
+        <h2>CPU</h2>
+        <p class="metric" id="cpu_percent">--</p>
+      </article>
+      <article class="card">
+        <h2>Memory</h2>
+        <p class="metric" id="memory_percent">--</p>
+      </article>
+      <article class="card">
+        <h2>Disk</h2>
+        <p class="metric" id="disk_percent">--</p>
+      </article>
+      <article class="card accent">
+        <h2>Health Score</h2>
+        <p class="metric" id="health_score">--</p>
+      </article>
+      <article class="card">
+        <h2>Download</h2>
+        <p class="metric" id="download_mbps">--</p>
+      </article>
+      <article class="card">
+        <h2>Upload</h2>
+        <p class="metric" id="upload_mbps">--</p>
+      </article>
+      <article class="card">
+        <h2>Latency</h2>
+        <p class="metric" id="latency_ms">--</p>
+      </article>
+      <article class="card">
+        <h2>Packet Loss</h2>
+        <p class="metric" id="packet_loss_percent">--</p>
+      </article>
+    </section>
+
+    <section class="grid charts">
+      <article class="card chart-card">
+        <h2>System Utilization</h2>
+        <canvas id="utilChart"></canvas>
+      </article>
+      <article class="card chart-card">
+        <h2>Network Speed</h2>
+        <canvas id="speedChart"></canvas>
+      </article>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <h2>Top Processes</h2>
+        <div id="process-table"></div>
+      </article>
+      <article class="card">
+        <h2>Recent Alerts</h2>
+        <div id="alerts"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
